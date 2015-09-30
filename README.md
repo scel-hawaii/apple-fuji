@@ -3,6 +3,14 @@
 This is the experimental firmware for the apple design that includes
 better coding practices.
 
+NOTE: apple-fuji is a slightly modified version of the apple design. In
+order to allow programming without having to remove the arduino 
+from the shield, we've removed the XBee from the hardware serial pins
+and put them onto pins 2 and 3 for software serial. This means that
+pins 2 and 3 are no longer available for the temperature sensors. 
+
+
+
 # Sections
 
 Filename            |   Description
