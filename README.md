@@ -1,8 +1,7 @@
-# apple-core
+# apple-fuji
 
-Contains some software examples for accessing the Apple weatherbox sensors. 
-
-
+This is the experimental firmware for the apple design that includes
+better coding practices.
 
 # Sections
 
@@ -12,6 +11,8 @@ apple-core.ino      |   Main file
 apple.h             |   Contains pin settings
 sensors.h           |   Header file for sensor functions
 sensors.cpp         |   Main functions for accessing sensors on the board
+comms.h             |   Communications header
+comms.cpp           |   Communications functions - XBee, serial and more
 
 
 # Build Instructions
@@ -24,6 +25,7 @@ sensors.cpp         |   Main functions for accessing sensors on the board
 5. Press upload when you're ready to program your device. 
 
 
+
 # Notes on .cpp and .h files
 
 If you're planning to modularize your code (which you should) by separating
@@ -34,4 +36,5 @@ it into the main `.ino` file as well.
 The main `.ino` file (the one with folder-name.ino) is that the Arduino IDE looks
 for when it attempts to link everything together. If the relevant headers are not included
 in the `.ino` file, you'll get an error when you try to build the project
+
 
