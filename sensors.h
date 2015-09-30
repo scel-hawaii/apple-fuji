@@ -19,12 +19,12 @@ extern SHT1x sht1x;
 extern Adafruit_BMP085 bmp085;
 extern Adafruit_INA219 ina219_Solar;
 
-void Sensors_init(void);
-int Sensors_sampleBatterymV(void);
-int Sensors_samplePanelmV(void);
-int Sensors_sampleSolarIrrmV(void);
-int Sensors_samplePressurepa(void);
-int Sensors_sampleHumiditypct(void);
-int Sensors_sampleTempdecic(void);
+void sensors_init(void);
+int sensors_sampleBatterymV(void);
+int sensors_samplePanelmV(void);
+int sensors_sampleSolarIrrmV(void);
+int sensors_samplePressurepa(void);
+int sensors_sampleHumiditypct(void);
+int sensors_sampleTempdecic(void);
 #endif
 
