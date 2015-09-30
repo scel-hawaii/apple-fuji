@@ -5,7 +5,6 @@
 #ifndef COMMS_H
 #define COMMS_H
 
-extern SoftwareSerial softserial;
 
 void comms_init(void);
 void comms_send_payload(void);

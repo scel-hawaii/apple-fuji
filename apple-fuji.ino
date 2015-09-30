@@ -24,20 +24,22 @@
 #include <Adafruit_INA219.h>
 #include <Adafruit_BMP085.h>
 
-void sample_sensors(void);
-
-void setup(){
-    sensors_init();
+void setup()
+{
     comms_init();
     Serial.begin(9600);
+
+    Serial.println("Startup sequence.");
+    Serial.println("Startup sequence.");
+    Serial.println("Startup sequence.");
+    Serial.println("OKAY");
+    Serial.println("OKAY");
+    Serial.println("OKAY");
+    Serial.println("OKAY");
 }
 
-void loop(){
-    sample_sensors();
-    delay(500);
-}
-
-void sample_sensors(void){
-    int temp = sensors_sampleTempdecic();
-    Serial.println(temp);
+void loop()
+{
+    comms_send_payload();
+    delay(1000);
 }

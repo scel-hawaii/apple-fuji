@@ -23,8 +23,8 @@
 #define _PIN_XBEE_RX 1
 #define _PIN_XBEE_SLEEP 13
 
-#define _PIN_AMB_TEMP 2
-#define _PIN_ROOF_TEMP 3
+#define _PIN_AMB_TEMP 11
+#define _PIN_ROOF_TEMP 12
 
 #define _PIN_GPS_RX 4
 #define _PIN_GPS_TX 5

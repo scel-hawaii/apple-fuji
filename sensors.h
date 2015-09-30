@@ -20,11 +20,11 @@ extern Adafruit_BMP085 bmp085;
 extern Adafruit_INA219 ina219_Solar;
 
 void sensors_init(void);
-int sensors_sampleBatterymV(void);
-int sensors_samplePanelmV(void);
-int sensors_sampleSolarIrrmV(void);
-int sensors_samplePressurepa(void);
-int sensors_sampleHumiditypct(void);
-int sensors_sampleTempdecic(void);
+int sensors_sample_batt(void);
+int sensors_sample_panel(void);
+int sensors_sample_irr(void);
+int sensors_sample_press(void);
+int sensors_sample_humid(void);
+int sensors_sample_temp(void);
 #endif
 
