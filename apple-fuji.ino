@@ -24,6 +24,23 @@
 #include <Adafruit_INA219.h>
 #include <Adafruit_BMP085.h>
 
+typedef struct {
+    uint16_t schema;
+    uint16_t address;       // Address of Arduino
+    uint32_t uptime_ms;     // Time since start of program
+
+    uint16_t batt_mv;   // Battery Voltage (in milli volts)
+    uint16_t panel_mv;  // Panel Voltage (in milli volts)
+    uint16_t bmp085_press_pa;   // Pressure Value (in pascals)
+    uint16_t bmp085_temp_decic;  // Temperature Value (in celsius)
+    uint16_t humidity_centi_pct;
+    uint16_t apogee_w_m2;
+} schema_1;
+
+schema_1 data;
+
+void payload_init(void);
+
 void setup()
 {
     comms_init();
@@ -36,10 +53,31 @@ void setup()
     Serial.println("OKAY");
     Serial.println("OKAY");
     Serial.println("OKAY");
+
 }
 
 void loop()
 {
-    comms_send_payload();
-    delay(1000);
+
+    payload_init();
+    uint8_t* payload = (uint8_t*) &data;
+    int size = sizeof(data);
+    Serial.println(size);
+
+    comms_send_payload(payload, size);
+    delay(300);
+}
+
+void payload_init()
+{
+    data.schema = 1;
+    data.address = 178;
+    data.uptime_ms = millis();
+
+    data.bmp085_press_pa = sensors_sample_press();
+    data.bmp085_temp_decic = sensors_sample_temp();
+    data.humidity_centi_pct = sensors_sample_humid();
+    data.batt_mv = sensors_sample_batt();
+    data.panel_mv = sensors_sample_panel();
+    data.apogee_w_m2 = sensors_sample_irr();
 }

@@ -7,6 +7,6 @@
 
 
 void comms_init(void);
-void comms_send_payload(void);
+void comms_send_payload(uint8_t* payload, int len);
 
 #endif
