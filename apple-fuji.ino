@@ -37,9 +37,19 @@ typedef struct {
     uint16_t apogee_w_m2;
 } schema_1;
 
+typedef struct {
+    uint16_t schema;
+    uint16_t address;       // Address of Arduino
+    uint32_t uptime_ms;     // Time since start of program
+
+    uint8_t message[40];
+} schema_2;
+
 schema_1 data;
+schema_2 data_message;
 
 void payload_init(void);
+void payload_init2(void);
 
 void setup()
 {
@@ -59,13 +69,32 @@ void setup()
 void loop()
 {
 
+    // Initialize payloads
     payload_init();
+    payload_init2();
+
+    // Send regular payload
     uint8_t* payload = (uint8_t*) &data;
     int size = sizeof(data);
-    Serial.println(size);
-
     comms_send_payload(payload, size);
+
+    // Send a message
+    payload = (uint8_t*) &data_message;
+    size = sizeof(data_message);
+    comms_send_payload(payload, size);
+
     delay(300);
+}
+
+void payload_init2()
+{
+
+    uint8_t text[40] = "Hello, my name is kenny and I like";
+    int len = sizeof(text);
+
+    data_message.schema = 2;
+    data_message.address = 178;
+    memcpy(&data_message.message, text, len);
 }
 
 void payload_init()
